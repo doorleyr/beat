@@ -31,13 +31,20 @@
 
         <activity
             android:name=".mapRoute"
-            android:label="@string/title_activity_map_route">
+            android:label="@string/title_activity_map_route"></activity>
+        <activity
+            android:name=".landing"
+            android:label="@string/title_activity_landing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".manualEntry" />
+        <activity
+            android:name=".MapEntry"
+            android:label="@string/title_activity_map_entry"></activity>
     </application>
 
 </manifest>

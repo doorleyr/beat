@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">beat2</string>
     <string name="title_activity_map_route">Choose Your Route</string>
+    <string name="title_activity_landing">BeAT Calculator</string>
+    <string name="walkRadioButtonText">Walk</string>
+    <string name="cycleRadioButtonText">Cycle</string>
+    <string name="modeBlankToast">Please select a mode of travel</string>
+    <string name="title_activity_map_entry">Map</string>
 </resources>

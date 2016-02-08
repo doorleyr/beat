@@ -1,9 +1,10 @@
 package com.example.doorleyr.beat2;
 
 import android.location.Location;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -16,20 +17,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
-public class mapRoute extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class MapEntry extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
-    private String mLatitudeText, mLongitudeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_route);
+        setContentView(R.layout.activity_map_entry);
 
-        // Build the API client first so that when the map is created you can use the location right away
         //* adding
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -44,8 +42,6 @@ public class mapRoute extends FragmentActivity implements OnMapReadyCallback, Go
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     //adding*
@@ -63,8 +59,7 @@ public class mapRoute extends FragmentActivity implements OnMapReadyCallback, Go
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
-            mLatitudeText=String.valueOf(mLastLocation.getLatitude());
-            mLongitudeText=String.valueOf(mLastLocation.getLongitude());
+            Log.d("LocationNULL", "Falied to get last location in onConnected");
         }
     }
     //*
@@ -75,8 +70,6 @@ public class mapRoute extends FragmentActivity implements OnMapReadyCallback, Go
         Toast.makeText(this,"onConnectionSuspended",Toast.LENGTH_SHORT).show();
     }
 //**
-
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -91,15 +84,10 @@ public class mapRoute extends FragmentActivity implements OnMapReadyCallback, Go
         mMap = googleMap;
         mMap.setMyLocationEnabled(true);
 
-
-
         // Add a marker in Sydney and move the camera
-        //LatLng dublin = new LatLng(53.3478, -6.2597);
-        //LatLng yourLocation=new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-        //mMap.addMarker(new MarkerOptions().position(yourLocation).title("Marker at you"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dublin, 11));
+        LatLng dublin = new LatLng(53.3478, -6.2597);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dublin, 11));
     }
-
     // automatically inserted by light bulb**
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
