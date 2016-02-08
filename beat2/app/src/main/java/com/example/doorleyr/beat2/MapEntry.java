@@ -22,12 +22,13 @@ public class MapEntry extends FragmentActivity implements OnMapReadyCallback, Go
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
+    private int isPed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_entry);
-
+        isPed= getIntent().getIntExtra("isPed", 0);
         //* adding
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)

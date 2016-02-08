@@ -35,9 +35,13 @@ public class landing extends AppCompatActivity {
                 } else if (mode==0){
                     Log.v("mapButtonClick", "The Pick Route on Map button has been clicked and mode = Cycle");
                     Intent i = new Intent(landing.this, MapEntry.class);
+                    i.putExtra("isPed",mode);
                     landing.this.startActivity(i);
                 } else{
                     Log.v("mapButtonClick", "The Pick Route on Map button has been clicked and mode = Walk");
+                    Intent i = new Intent(landing.this, MapEntry.class);
+                    i.putExtra("isPed",mode);
+                    landing.this.startActivity(i);
                 }
             }
         });
@@ -50,9 +54,15 @@ public class landing extends AppCompatActivity {
                             R.string.modeBlankToast,
                             Toast.LENGTH_SHORT).show();
                 } else if (mode==0){
-                    Log.v("mapButtonClick", "The Enter Route Info Manually button has been clicked and mode = Cycle");
+                    Log.v("manualButtonClick", "The Enter Route Info Manually button has been clicked and mode = Cycle");
+                    Intent i = new Intent(landing.this, manualEntry.class);
+                    i.putExtra("isPed",mode);
+                    landing.this.startActivity(i);
                 } else{
-                    Log.v("mapButtonClick", "The Enter Route Info Manually button has been clicked and mode = Walk");
+                    Log.v("manualButtonClick", "The Enter Route Info Manually button has been clicked and mode = Walk");
+                    Intent i = new Intent(landing.this, manualEntry.class);
+                    i.putExtra("isPed",mode);
+                    landing.this.startActivity(i);
                 }
             }
         });
